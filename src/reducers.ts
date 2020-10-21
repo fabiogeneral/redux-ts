@@ -1,8 +1,12 @@
 import { combineReducers } from 'redux';
-import { userReducer } from 'components';
+import { IUserState, userReducer } from 'components';
 
-const rootReducer = combineReducers({
+export interface IStoreState {
+    userReducer: IUserState;
+}
+
+const reducers = combineReducers<IStoreState>({
     userReducer,
 });
 
-export default rootReducer;
+export default reducers;
