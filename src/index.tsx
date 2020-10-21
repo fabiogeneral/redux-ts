@@ -9,7 +9,10 @@ import { Provider } from 'react-redux';
 import reducers from 'reducers';
 import { userInitialState } from 'components';
 
-const store = createStore(reducers);
+const store = createStore(
+    reducers,
+    (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__(),
+);
 console.log(store.getState());
 
 store.dispatch({
