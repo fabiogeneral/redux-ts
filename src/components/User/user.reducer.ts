@@ -1,13 +1,19 @@
 export const userInitialState = {
+    id: '',
     firstName: '',
+    lastName: '',
+    email: '',
 };
 
 export interface IUserState {
+    id: string | null;
     firstName: string;
+    lastName: string;
+    email: string;
 }
 
 export enum UserType {
-    ADD_USER = 'ADD_USER',
+    UPDATE_USER = 'UPDATE_USER',
 }
 
 export interface IUserAction {
@@ -17,10 +23,10 @@ export interface IUserAction {
 
 export const userReducer = (currentState: IUserState = userInitialState, action: IUserAction) => {
     switch (action.type) {
-        case UserType.ADD_USER:
+        case UserType.UPDATE_USER:
             return {
                 ...currentState,
-                firstName: action.payload.firstName,
+                ...action.payload,
             };
         default:
             return currentState;
