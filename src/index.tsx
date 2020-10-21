@@ -6,9 +6,16 @@ import * as serviceWorker from './serviceWorker';
 
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import rootReducer from './rootReducer';
+import reducers from 'reducers';
 
-const store = createStore(rootReducer);
+const store = createStore(reducers);
+console.log(store.getState());
+
+store.dispatch({
+    type: 'ADD_USER',
+    payload: 'John',
+});
+console.log(store.getState());
 
 ReactDOM.render(
     <Provider store={store}>
