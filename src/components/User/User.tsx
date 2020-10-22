@@ -14,7 +14,8 @@ const User: React.FC = () => {
 
     useEffect(() => {
         // Fetch User
-        /* api call */
+        /* api call simulation */
+        // comment this to check persistance
         const userData = {
             id: 'bdecfb87-5948-4c50-8329-455ddfbc950e',
             firstName: 'Josh',
