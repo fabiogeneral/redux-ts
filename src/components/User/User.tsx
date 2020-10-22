@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { IStoreState } from 'reducers';
 import { IUserAction, IUserState, UserType } from 'components';
+import { push } from 'connected-react-router';
 
 type Dispatch = (event: IUserAction) => IUserState;
 
@@ -9,6 +10,7 @@ const User: React.FC = () => {
     const user: IUserState = useSelector((state: IStoreState) => state.userReducer);
     const { firstName, lastName } = user;
     const dispatch: Dispatch = useDispatch();
+    const router = useDispatch();
 
     useEffect(() => {
         // Fetch User
@@ -29,6 +31,7 @@ const User: React.FC = () => {
         <div>
             {firstName} {lastName}
             <br />
+            <br />
             <button
                 onClick={() =>
                     dispatch({
@@ -39,6 +42,9 @@ const User: React.FC = () => {
             >
                 Change First Name to John
             </button>
+            <br />
+            <br />
+            <button onClick={() => router(push('/test'))}>Go to Test Page</button>
         </div>
     );
 };
