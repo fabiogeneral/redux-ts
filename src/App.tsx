@@ -2,7 +2,7 @@ import React from 'react';
 import { ConnectedRouter } from 'connected-react-router';
 import { History } from 'history';
 import { Route, Switch } from 'react-router';
-import { UserComponent } from 'components';
+import { LoginComponent, OtherComponent, PrivateRoute, UserComponent } from 'components';
 
 type Props = {
     history: History;
@@ -10,11 +10,10 @@ type Props = {
 
 const App: React.FC<Props> = ({ history }) => (
     <ConnectedRouter history={history}>
-        <div>Menu</div>
-        <br />
         <Switch>
-            <Route exact path="/" component={UserComponent} />
-            <Route path="/test" render={() => <div>Test</div>} />
+            <Route exact path="/" component={LoginComponent} />
+            <PrivateRoute path="/user" component={UserComponent} />
+            <PrivateRoute path="/other" component={OtherComponent} />
         </Switch>
     </ConnectedRouter>
 );
